@@ -1,0 +1,40 @@
+# --- MUST EXCLUDE (huge) ---
+node_modules
+**/node_modules
+
+# --- caches / local ---
+.expo
+.expo-shared
+**/.cache
+**/.turbo
+**/.npm
+**/.yarn
+npm-cache
+yarn-cache
+
+# --- VCS / IDE ---
+.git
+.vscode
+
+# --- logs ---
+*.log
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- build artifacts (if exist) ---
+dist
+build
+out
+web-build
+.next
+coverage
+
+# --- optional: if you accidentally have big media not needed ---
+**/*.psd
+**/*.ai
+**/*.mp4
+**/*.mov
+**/*.zip
+**/*.7z
