@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "entryPoint": "./App.js",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/egg.png",
     "scheme": "eggtapgame",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -21,7 +21,7 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.blueberry00.eggtapgame"
+      "package": "xyz.tailorchain.eggtapgame"
     },
     "web": {
       "output": "static",

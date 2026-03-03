@@ -41,3 +41,44 @@ app-example
 # generated native folders
 /ios
 /android
+
+# ===============================
+# Build / Cache
+# ===============================
+.build/
+coverage/
+.cache/
+.tmp/
+temp/
+
+# Expo EAS
+.eas/
+.eas-build/
+credentials.json
+
+# React Native / Metro
+.bundle/
+*.hprof
+
+# Android build outputs
+android/app/build/
+android/build/
+
+# iOS build outputs
+ios/build/
+
+# Logs
+*.log
+
+# VSCode workspace
+*.code-workspace
+
+# Storyboard / design leftovers (혹시 있을 경우)
+*.psd
+*.ai
+
+# Windows
+Thumbs.db
+
+# Optional large assets folder (스토어용 이미지 분리 시)
+imagesForStore/
