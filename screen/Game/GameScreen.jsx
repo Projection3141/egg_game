@@ -12,7 +12,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const UI = {
   EGG_SIZE_RATIO: 0.8,
-  MAX_COUNT: 99,
+  MAX_COUNT: 1000,
   DRAWER_WIDTH_RATIO: 0.4,
   OVERLAY_OPACITY: 0.7,
 };
@@ -25,7 +25,9 @@ export default function GameScreen({ onGoWebView }) {
    * 게임 상태
    * ============================== */
   const [count, setCount] = useState(0);
+  const [combo, setCombo] = useState(0);
   const [isClear, setIsClear] = useState(false);
+  const lastPressTime = useRef(null);
 
   const eggBoxSize = useMemo(() => {
     const minSide = Math.min(width, height);
@@ -36,18 +38,28 @@ export default function GameScreen({ onGoWebView }) {
    * 달걀 클릭 로직
    * ============================== */
   const handleEggPress = () => {
+    const now = Date.now();
+    const diff = lastPressTime.current ? now - lastPressTime.current : Infinity;
+    const nextCombo = diff <= 1000 ? combo + 1 : 1;
+
+    lastPressTime.current = now;
+
     if (isClear) {
       // clear 상태에서 한 번 더 누르면 초기화
       setIsClear(false);
       setCount(0);
+      setCombo(0);
+      lastPressTime.current = null;
       return;
     }
 
     if (count >= UI.MAX_COUNT) {
       setIsClear(true);
+      setCombo(0);
       return;
     }
 
+    setCombo(nextCombo);
     setCount((prev) => prev + 1);
   };
 
@@ -116,19 +128,33 @@ export default function GameScreen({ onGoWebView }) {
       </View>
 
       {/* ================= 달걀 ================= */}
-      <Pressable
-        onPress={handleEggPress}
-        style={({ pressed }) => [
-          styles.eggBox,
-          {
-            width: eggBoxSize,
-            height: eggBoxSize,
-            transform: [{ scale: pressed ? 0.98 : 1 }],
-          },
-        ]}
-      >
-        <Image source={eggImg} style={styles.eggImage} />
-      </Pressable>
+      <View style={styles.eggWrapper}>
+        {combo >= 10 && (
+          <View style={styles.comboBadge} pointerEvents="none">
+            <Text style={styles.comboText}>{combo} COMBO</Text>
+          </View>
+        )}
+
+        <Pressable
+          onPress={handleEggPress}
+          style={({ pressed }) => {
+            const hoverScale = combo >= 10
+              ? Math.min(1.3, 1.1 + Math.floor((combo - 10) / 20) * 0.04)
+              : 0.98;
+
+            return [
+              styles.eggBox,
+              {
+                width: eggBoxSize,
+                height: eggBoxSize,
+                transform: [{ scale: pressed ? hoverScale : 1 }],
+              },
+            ];
+          }}
+        >
+          <Image source={eggImg} style={styles.eggImage} />
+        </Pressable>
+      </View>
 
       {/* ================= Reset 버튼 ================= */}
       <Pressable
@@ -207,11 +233,42 @@ const styles = StyleSheet.create({
 
   labelText: { fontSize: 42, fontWeight: "800" },
 
+  eggWrapper: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
   eggBox: {
     borderRadius: 26,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    overflow: "hidden",
+  },
+
+  comboBadge: {
+    position: "absolute",
+    top: -32,
+    zIndex: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 16,
+    backgroundColor: "rgba(255,255,255,0.95)",
+    borderWidth: 1,
+    borderColor: "#f59e0b",
+    shadowColor: "#f59e0b",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    elevation: 4,
+  },
+
+  comboText: {
+    fontSize: 16,
+    fontWeight: "800",
+    color: "#b45309",
   },
 
   eggImage: { width: "100%", height: "100%", resizeMode: "contain" },
