@@ -1,37 +1,37 @@
 {
   "expo": {
-    "name": "egg-tap-game",
-    "slug": "egg-tap-game",
+    "name": "coin-hero",
+    "slug": "coin-hero",
     "version": "1.0.0",
     "entryPoint": "./App.js",
     "orientation": "portrait",
-    "icon": "./assets/egg.png",
-    "scheme": "eggtapgame",
+    "icon": "./assets/hero_win.png",
+    "scheme": "coin-hero",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "xyz.tailorchain.egg-tap-game",
-      "icon": "./assets/egg.png",
+      "bundleIdentifier": "xyz.tailorchain.coinhero",
+      "icon": "./assets/hero_win.png",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
-      "icon": "./assets/egg.png",
+      "icon": "./assets/hero_win.png",
       "adaptiveIcon": {
         "backgroundColor": "#ffffff",
-        "foregroundImage": "./assets/egg.png",
-        "backgroundImage": "./assets/egg.png",
-        "monochromeImage": "./assets/egg.png"
+        "foregroundImage": "./assets/hero_win.png",
+        "backgroundImage": "./assets/hero_win.png",
+        "monochromeImage": "./assets/hero_win.png"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "xyz.tailorchain.eggtapgame2"
+      "package": "xyz.tailorchain.coinhero"
     },
     "web": {
       "output": "static",
-      "favicon": "./assets/egg.png"
+      "favicon": "./assets/hero_win.png"
     },
     "experiments": {
       "typedRoutes": true,

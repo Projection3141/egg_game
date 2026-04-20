@@ -1,5 +1,5 @@
 {
-  "name": "egg-tap-game",
+  "name": "coin-hero",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
