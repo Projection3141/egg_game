@@ -1,6 +1,6 @@
 // App.js
 import React, { useCallback, useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, LogBox } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
@@ -11,6 +11,8 @@ import WebViewScreen from "./screen/Webview/WebViewScreen";
  * ✅ SafeAreaView 제거
  * - SafeAreaProvider + 각 화면에서 insets 사용
  ******************************************************************************/
+
+LogBox.ignoreAllLogs(true);
 
 export default function App() {
   const [screen, setScreen] = useState("game");
