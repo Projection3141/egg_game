@@ -15,7 +15,8 @@
       "icon": "./assets/hero_win.png",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
-      }
+      },
+      "buildNumber": "2"
     },
     "android": {
       "icon": "./assets/hero_win.png",
@@ -39,8 +40,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "b7b5313f-9eec-43a7-8398-2f6316f08672"
+        "projectId": "0890e58c-6bcd-4fff-8e6a-92405aba3516"
       }
-    }
+    },
+    "owner": "blueberry00"
   }
 }

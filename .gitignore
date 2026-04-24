@@ -82,3 +82,6 @@ Thumbs.db
 
 # Optional large assets folder (스토어용 이미지 분리 시)
 imagesForStore/
+
+# Optional screenshots folder (개발 중 스크린샷 저장 시)
+screenshots/
